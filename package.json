@@ -34,22 +34,22 @@
           "dark": "resources/dark/refresh.svg"
         }
       },
-	  {
-		"command": "secretExplorer.createEntry",
-		"title": "Add",
-		"icon": {
-		  "light": "resources/light/add.svg",
-		  "dark": "resources/dark/add.svg"
-		}
-	  },
-	  {
-		"command": "secretExplorer.deleteEntry",
-		"title": "Delete",
-		"icon": {
-		  "light": "resources/light/delete.svg",
-		  "dark": "resources/dark/delete.svg"
-		}
-	  },
+      {
+        "command": "secretExplorer.createEntry",
+        "title": "Add",
+        "icon": {
+          "light": "resources/light/add.svg",
+          "dark": "resources/dark/add.svg"
+        }
+      },
+      {
+        "command": "secretExplorer.deleteEntry",
+        "title": "Delete",
+        "icon": {
+          "light": "resources/light/delete.svg",
+          "dark": "resources/dark/delete.svg"
+        }
+      },
       {
         "command": "secretExplorer.editEntry",
         "title": "Edit",
@@ -106,12 +106,12 @@
           "command": "secretExplorer.refreshEntry",
           "when": "view == secretExplorer",
           "group": "navigation"
-		},
-		{
-			"command": "secretExplorer.createEntry",
-			"when": "view == secretExplorer",
-			"group": "navigation"
-		}
+        },
+        {
+          "command": "secretExplorer.createEntry",
+          "when": "view == secretExplorer",
+          "group": "navigation"
+        }
       ],
       "view/item/context": [
         {
