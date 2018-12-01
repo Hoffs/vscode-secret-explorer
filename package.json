@@ -1,0 +1,156 @@
+{
+  "name": "dotnet-secret-explorer",
+  "displayName": "Secret explorer",
+  "description": "Shows a UserSecert folder in explorer view for quick editing and add helper methods for Base64 conversion",
+  "version": "0.1.0",
+  "publisher": "hoffs",
+  "enableProposedApi": true,
+  "engines": {
+    "vscode": "^1.25.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "viewsContainers": {},
+    "views": {
+      "explorer": [
+        {
+          "id": "secretExplorer",
+          "name": "User Secrets"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "secretExplorer.refreshEntry",
+        "title": "Refresh",
+        "icon": {
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
+        }
+      },
+	  {
+		"command": "secretExplorer.createEntry",
+		"title": "Add",
+		"icon": {
+		  "light": "resources/light/add.svg",
+		  "dark": "resources/dark/add.svg"
+		}
+	  },
+	  {
+		"command": "secretExplorer.deleteEntry",
+		"title": "Delete",
+		"icon": {
+		  "light": "resources/light/delete.svg",
+		  "dark": "resources/dark/delete.svg"
+		}
+	  },
+      {
+        "command": "secretExplorer.editEntry",
+        "title": "Edit",
+        "icon": {
+          "light": "resources/light/edit.svg",
+          "dark": "resources/dark/edit.svg"
+        }
+      },
+      {
+        "command": "secretExplorer.entryToBase64",
+        "title": "Copy as Base64",
+        "icon": {
+          "light": "resources/light/document.svg",
+          "dark": "resources/dark/document.svg"
+        }
+      },
+      {
+        "command": "extension.copyToClipboardAsBase64",
+        "title": "SecretExplorer: Selected UTF-8 string to clipboard as Base64 string"
+      },
+      {
+        "command": "extension.convertFromBase64ToTextFromClipboard",
+        "title": "SecretExplorer: Clipboard Base64 string to UTF-8"
+      },
+      {
+        "command": "extension.convertFromBase64ToText",
+        "title": "SecretExplorer: Selected Base64 string to UTF-8"
+      },
+      {
+        "command": "extension.convertFromTextToBase64",
+        "title": "SecretExplorer: Selected UTF-8 string to Base64"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "extension.copyToClipboardAsBase64",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.convertFromBase64ToTextFromClipboard"
+        },
+        {
+          "command": "extension.convertFromBase64ToText",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.convertFromTextToBase64",
+          "when": "editorHasSelection"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "secretExplorer.refreshEntry",
+          "when": "view == secretExplorer",
+          "group": "navigation"
+		},
+		{
+			"command": "secretExplorer.createEntry",
+			"when": "view == secretExplorer",
+			"group": "navigation"
+		}
+      ],
+      "view/item/context": [
+        {
+          "command": "secretExplorer.editEntry",
+          "when": "view == secretExplorer && viewItem == secret",
+          "group": "inline"
+        },
+        {
+          "command": "secretExplorer.entryToBase64",
+          "when": "view == secretExplorer && viewItem == secret",
+          "group": "inline"
+        },
+        {
+          "command": "secretExplorer.deleteEntry",
+          "when": "view == secretExplorer && viewItem == secret",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": []
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/mkdirp": "^0.5.2",
+    "@types/node": "*",
+    "@types/rimraf": "^2.0.2",
+    "tslint": "^5.11.0",
+    "typescript": "^2.1.4",
+    "vscode": "^1.1.22"
+  },
+  "dependencies": {
+    "clipboardy": "^1.2.3",
+    "jsonc-parser": "^0.4.2",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.2"
+  }
+}
