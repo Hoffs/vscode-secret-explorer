@@ -50,6 +50,11 @@ export class SecretProvider implements vscode.TreeDataProvider<Secret> {
 				vscode.window.showInformationMessage("No secret created");
 				return;
 			}
+			
+			if (!this.pathExists(this._secretPath)) {
+				fs.mkdirSync(this._secretPath);
+			}
+			
 			const isdir = fs.readdirSync(this._secretPath).some(x => x === value);
 			if (isdir)
 			{
@@ -90,13 +95,11 @@ export class SecretProvider implements vscode.TreeDataProvider<Secret> {
 		if (this.pathExists(this._secretPath)) {
 			const folders = fs.readdirSync(this._secretPath)
 				.filter(found => fs.statSync(path.join(this._secretPath, found)).isDirectory());
-			var items = folders.map<Secret>(folder => {
+			return folders.map<Secret>(folder => {
 				const filePath = path.join(this._secretPath, folder, "secrets.json");
 				if (!fs.statSync(filePath).isFile()) return null;
 				return new Secret(filePath, folder, vscode.TreeItemCollapsibleState.None);
 			});
-
-			return items;
 		} else {
 			return [];
 		}

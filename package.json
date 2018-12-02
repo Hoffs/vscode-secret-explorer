@@ -2,9 +2,13 @@
   "name": "dotnet-secret-explorer",
   "displayName": "Secret explorer",
   "description": "Shows a UserSecert folder in explorer view for quick editing and add helper methods for Base64 conversion",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "publisher": "hoffs",
-  "enableProposedApi": true,
+  "enableProposedApi": false,
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Hoffs/vscode-secret-explorer.git"
+  },
   "engines": {
     "vscode": "^1.25.0"
   },
@@ -14,6 +18,7 @@
   "activationEvents": [
     "*"
   ],
+  "icon": "media/icon.png",
   "main": "./out/extension",
   "contributes": {
     "viewsContainers": {},
